@@ -6,10 +6,9 @@ import java.util.logging.Level;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import mycleann.FirstClass;
 
 public class TrakingOrder {
-	static Logger logger = Logger.getLogger(FirstClass.class.getName());
+	static Logger logger = Logger.getLogger(TrakingOrder.class.getName());
 
 	String CustomerName;
 	int ordernum;

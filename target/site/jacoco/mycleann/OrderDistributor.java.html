@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderDistributor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mycleann</a> &gt; <a href="index.source.html" class="el_package">mycleann</a> &gt; <span class="el_source">OrderDistributor.java</span></div><h1>OrderDistributor.java</h1><pre class="source lang-java linenums">package mycleann;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class OrderDistributor {
+<span class="nc" id="L9">	static Logger logger = Logger.getLogger(OrderDistributor.class.getName());</span>
+
+  private List&lt;Worker&gt; availableWorkers;
+  
+<span class="nc" id="L13">  public OrderDistributor(List&lt;Worker&gt; availableWorkers) {</span>
+<span class="nc" id="L14">    this.availableWorkers = availableWorkers;</span>
+<span class="nc" id="L15">  }</span>
+  
+  public void distributeOrders(List&lt;Orderr&gt; orders) {
+<span class="nc" id="L18">    int numOrders = orders.size();</span>
+<span class="nc" id="L19">    int numWorkers = availableWorkers.size();</span>
+    
+<span class="nc bnc" id="L21" title="All 2 branches missed.">    if (numWorkers == 0) {</span>
+<span class="nc" id="L22">    	logger.log(Level.INFO,&quot;No workers available to distribute orders&quot;);</span>
+<span class="nc" id="L23">      return;</span>
+    }
+    
+<span class="nc bnc" id="L26" title="All 2 branches missed.">    if (numOrders &gt; numWorkers) {</span>
+<span class="nc" id="L27">    	logger.log(Level.INFO,&quot;There are more orders than workers available&quot;);</span>
+    }
+    
+<span class="nc" id="L30">    int ordersPerWorker = numOrders / numWorkers; </span>
+<span class="nc" id="L31">    int remainingOrders = numOrders % numWorkers;</span>
+    
+<span class="nc" id="L33">    int currentOrderIndex = 0;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">    for (int i = 0; i &lt; numWorkers; i++) {</span>
+<span class="nc" id="L35">      Worker worker = availableWorkers.get(i);</span>
+      
+<span class="nc" id="L37">      int numWorkerOrders = ordersPerWorker;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">      if (i &lt; remainingOrders) {</span>
+<span class="nc" id="L39">        numWorkerOrders++; </span>
+      }
+      
+<span class="nc" id="L42">      List&lt;Orderr&gt; workerOrders = new ArrayList&lt;Orderr&gt;();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">      for (int j = 0; j &lt; numWorkerOrders; j++) {</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (currentOrderIndex &gt;= numOrders) {</span>
+<span class="nc" id="L45">          break; </span>
+        }
+<span class="nc" id="L47">        Orderr order = orders.get(currentOrderIndex);</span>
+<span class="nc" id="L48">        workerOrders.add(order);</span>
+<span class="nc" id="L49">        currentOrderIndex++;</span>
+      }
+      
+<span class="nc" id="L52">      worker.assignOrders(workerOrders);</span>
+    }
+<span class="nc" id="L54">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

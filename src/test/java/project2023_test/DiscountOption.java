@@ -7,11 +7,10 @@ import java.util.logging.Logger;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import mycleann.FirstClass;
 
 
 public class DiscountOption {
-	static Logger logger = Logger.getLogger(FirstClass.class.getName());
+	static Logger logger = Logger.getLogger(DiscountOption.class.getName());
 
     ArrayList<String> name , totalpayed , frequently;
     boolean flag = false;

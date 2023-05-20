@@ -12,7 +12,6 @@ import io.cucumber.java.en.When;
 import mycleann.Admin;
 import mycleann.Company;
 import mycleann.Customers;
-import mycleann.FirstClass;
 import mycleann.Product;
 
 import java.time.LocalDateTime;
@@ -23,7 +22,7 @@ import java.util.Scanner;
 
 public class Rrport 
 {
-	static Logger logger = Logger.getLogger(FirstClass.class.getName());
+	static Logger logger = Logger.getLogger(Rrport.class.getName());
 
 Admin admin;
 Customers cus;

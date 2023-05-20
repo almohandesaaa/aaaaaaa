@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FirstClass.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mycleann</a> &gt; <a href="index.source.html" class="el_package">mycleann</a> &gt; <span class="el_source">FirstClass.java</span></div><h1>FirstClass.java</h1><pre class="source lang-java linenums">package mycleann;
+
+import java.util.HashMap;
+import java.util.Properties;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.logging.Logger;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.core.JsonProcessingException;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.logging.Level;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+
+<span class="nc" id="L25">public class FirstClass {</span>
+<span class="nc" id="L26">	static Logger logger = Logger.getLogger(FirstClass.class.getName());</span>
+	static RandomAccessFile fromFile;
+<span class="nc" id="L28">    static Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L29">    static String print = &quot;Please enter the name:&quot;;</span>
+<span class="nc" id="L30">    static Admin admin = new Admin();</span>
+<span class="nc" id="L31">static String filenameproperities=&quot;customer.txt&quot;;</span>
+<span class="nc" id="L32">static String filenameproperities2=&quot;product.txt&quot;;</span>
+
+	public static void adminMenue()
+	{
+<span class="nc" id="L36">          Product product = new Product();</span>
+<span class="nc" id="L37">          logger.log(Level.INFO, &quot;Please enter the category:&quot;);</span>
+<span class="nc" id="L38">          String category = scanner.next();</span>
+<span class="nc" id="L39">          logger.log(Level.INFO, print);</span>
+<span class="nc" id="L40">          String name8 = scanner.next();</span>
+<span class="nc" id="L41">          logger.log(Level.INFO, &quot;Please enter the price:&quot;);</span>
+<span class="nc" id="L42">          String price = scanner.next();</span>
+<span class="nc" id="L43">          logger.log(Level.INFO, &quot;Please enter the amount:&quot;);</span>
+<span class="nc" id="L44">          String amount = scanner.next();</span>
+<span class="nc" id="L45">          logger.log(Level.INFO, &quot;Please enter the order ID:&quot;);</span>
+<span class="nc" id="L46">          String orderid = scanner.next();</span>
+          
+<span class="nc" id="L48">          product.add(admin);</span>
+<span class="nc" id="L49">          Company company = new Company();</span>
+<span class="nc" id="L50">          company.putProduct(category, name8, price, amount, orderid);</span>
+          
+<span class="nc" id="L52">          String filename = filenameproperities2;</span>
+          
+          try {
+<span class="nc" id="L55">          		FileOutputStream fos = new FileOutputStream(filename, true); </span>
+<span class="nc" id="L56">          		FileChannel channel = fos.getChannel() ;</span>
+<span class="nc" id="L57">              String productInfo = category + &quot;,&quot; + name8 + &quot;,&quot; + price  + &quot;,&quot; + amount + &quot;,&quot; + orderid + &quot;\n&quot;;</span>
+<span class="nc" id="L58">              ByteBuffer buffer = ByteBuffer.wrap(productInfo.getBytes());</span>
+<span class="nc" id="L59">              channel.write(buffer);</span>
+<span class="nc" id="L60">              logger.log(Level.INFO, &quot;Product information has been written to the file.&quot;);</span>
+<span class="nc" id="L61">          } catch (IOException e) {</span>
+<span class="nc" id="L62">        	  logger.info(&quot;Error writing to the file: &quot; + e.getMessage());</span>
+<span class="nc" id="L63">        	  }</span>
+          
+<span class="nc" id="L65">	}</span>
+	
+	
+	
+	
+	public static void function() throws IOException 
+	{
+		
+	    int key;
+
+	    while (true) {
+<span class="nc" id="L76">	        logger.log(Level.INFO, &quot;Welcome to our library. Who are you?\n1-Admin.\n2-User.\n3-Exit the Company.&quot;);</span>
+
+<span class="nc" id="L78">	        Properties properties = new Properties();</span>
+<span class="nc" id="L79">	        FileInputStream inputStream = new FileInputStream(&quot;C:\\Users\\Hp\\Desktop\\New folder (8)\\mycleanadhamfgdfg\\src\\test\\resources\\config.properties&quot;);</span>
+<span class="nc" id="L80">	        properties.load(inputStream);</span>
+	        
+<span class="nc" id="L82">	        key = scanner.nextInt();</span>
+<span class="nc bnc" id="L83" title="All 4 branches missed.">	        switch (key) {</span>
+	        
+	        case 1:
+<span class="nc" id="L86">	            logger.log(Level.INFO, &quot;Enter the name:&quot;);</span>
+<span class="nc" id="L87">	            String name = scanner.next();</span>
+<span class="nc" id="L88">	            logger.log(Level.INFO, &quot;Enter the password:&quot;);</span>
+<span class="nc" id="L89">	            String password = scanner.next();</span>
+
+<span class="nc bnc" id="L91" title="All 4 branches missed.">	            if (!admin.adminPassword.equals(password) || !admin.adminName.equals(name)) {</span>
+<span class="nc" id="L92">	                logger.log(Level.INFO, &quot;The name or password is wrong&quot;);</span>
+<span class="nc" id="L93">	                break;</span>
+	            }
+
+<span class="nc" id="L96">	            admin.login(name, password);</span>
+	            while (true) {
+<span class="nc" id="L98">	                logger.log(Level.INFO, &quot;\n3-Add product.\n4-Update product.\n5-Delete product.\n6-Search product.\n7-Add customer.\n8-Update customer.\n9-Delete customer.\n10-Notification user.\n11-Print report.\n12-Print discount option.\n13-Send email.\n14-Order distribution.\n16-Search customer.&quot;);</span>
+<span class="nc" id="L99">	                key = scanner.nextInt();</span>
+
+<span class="nc bnc" id="L101" title="All 12 branches missed.">	                    switch (key)</span>
+	                    {
+	                      
+	                    
+	                    case 3:
+<span class="nc" id="L106">	                    	adminMenue();</span>
+<span class="nc" id="L107">	                    	break;</span>
+	                    
+	                    
+	                    case 4:
+<span class="nc" id="L111">	                        logger.log(Level.INFO, print);</span>
+<span class="nc" id="L112">	                        String name1 = scanner.next();</span>
+
+<span class="nc" id="L114">	                        File file1 = new File(filenameproperities2);</span>
+<span class="nc" id="L115">	                        Scanner in1 = new Scanner(file1);</span>
+
+	                        String string1;
+<span class="nc" id="L118">	                        StringBuilder n = new StringBuilder();</span>
+<span class="nc" id="L119">	                        String str = &quot;&quot;;</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">	                        while (in1.hasNextLine()) {</span>
+<span class="nc" id="L121">	                            string1 = in1.nextLine();</span>
+<span class="nc" id="L122">	                            String[] splited1 = string1.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">	                            if (splited1[1].equals(name1)) {</span>
+<span class="nc" id="L124">	                                logger.log(Level.INFO, &quot;please enter the Category&quot;);</span>
+<span class="nc" id="L125">	                                String category1 = scanner.next();</span>
+<span class="nc" id="L126">	                                logger.log(Level.INFO, print);</span>
+<span class="nc" id="L127">	                                String name15 = scanner.next();</span>
+<span class="nc" id="L128">	                                logger.log(Level.INFO, &quot;please enter the price&quot;);</span>
+<span class="nc" id="L129">	                                String price1 = scanner.next();</span>
+<span class="nc" id="L130">	                                logger.log(Level.INFO, &quot;please enter the amount&quot;);</span>
+<span class="nc" id="L131">	                                String amount1 = scanner.next();</span>
+<span class="nc" id="L132">	                                logger.log(Level.INFO, &quot;please enter the Order ID&quot;);</span>
+<span class="nc" id="L133">	                                String orderid1 = scanner.next();</span>
+<span class="nc" id="L134">	                                str = category1 + &quot;,&quot; + name15 + &quot;,&quot; + price1 + &quot;,&quot; + amount1 + &quot;,&quot; + orderid1;</span>
+<span class="nc" id="L135">	                                n.append(str).append(&quot;\n&quot;);</span>
+<span class="nc" id="L136">	                            } else {</span>
+<span class="nc" id="L137">	                                n.append(string1).append(&quot;\n&quot;);</span>
+	                            }
+<span class="nc" id="L139">	                        }</span>
+
+<span class="nc" id="L141">	                        in1.close();</span>
+<span class="nc" id="L142">	                        FileWriter newFile = new FileWriter(filenameproperities2);</span>
+<span class="nc" id="L143">	                        newFile.write(n.toString());</span>
+<span class="nc" id="L144">	                        newFile.close();</span>
+<span class="nc" id="L145">	                        break;</span>
+
+
+	                        case 5:
+<span class="nc" id="L149">	                            logger.log(Level.INFO, print);</span>
+<span class="nc" id="L150">	                            String name2 = scanner.next();</span>
+	                            
+	                            try {
+<span class="nc" id="L153">	                                ArrayList&lt;String&gt; al = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L154">	                                RandomAccessFile raf = new RandomAccessFile(filenameproperities2, &quot;rw&quot;);</span>
+<span class="nc" id="L155">	                                raf.seek(0);</span>
+	                                String s;
+<span class="nc bnc" id="L157" title="All 2 branches missed.">	                                while ((s = raf.readLine()) != null) {</span>
+<span class="nc" id="L158">	                                    al.add(s);</span>
+	                                }
+<span class="nc bnc" id="L160" title="All 2 branches missed.">	                                for (int i = 0; i &lt; al.size(); i++) {</span>
+<span class="nc" id="L161">	                                    String[] up = al.get(i).split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">	                                    if (name2.equals(up[1])) {</span>
+<span class="nc" id="L163">	                                        al.remove(i);</span>
+<span class="nc" id="L164">	                                        break;</span>
+	                                    }
+	                                }
+<span class="nc" id="L167">	                                BufferedWriter writer = new BufferedWriter(new FileWriter(filenameproperities2));</span>
+<span class="nc" id="L168">	                                writer.write(&quot;&quot;);</span>
+<span class="nc" id="L169">	                                writer.flush();</span>
+<span class="nc" id="L170">	                                writer.close();</span>
+<span class="nc" id="L171">	                                raf.seek(0);</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">	                                for (int i = 0; i &lt; al.size(); i++) {</span>
+<span class="nc" id="L173">	                                    raf.writeBytes(al.get(i) + &quot;\n&quot;);</span>
+	                                }
+<span class="nc" id="L175">	                                raf.close();</span>
+<span class="nc" id="L176">	                            } catch (Exception e) {</span>
+<span class="nc" id="L177">	                                logger.log(Level.INFO, &quot;Error&quot;);</span>
+<span class="nc" id="L178">	                            }</span>
+<span class="nc" id="L179">	                            break;</span>
+	                        case 7:
+<span class="nc" id="L181">	                            Customers customer = new Customers();</span>
+<span class="nc" id="L182">	                            logger.log(Level.INFO, &quot;Please enter the ID:&quot;);</span>
+<span class="nc" id="L183">	                            String id = scanner.next();</span>
+<span class="nc" id="L184">	                            logger.log(Level.INFO, &quot;Please enter the name:&quot;);</span>
+<span class="nc" id="L185">	                            String name9 = scanner.next();</span>
+<span class="nc" id="L186">	                            logger.log(Level.INFO, &quot;Please enter the email:&quot;);</span>
+<span class="nc" id="L187">	                            String email = scanner.next();</span>
+<span class="nc" id="L188">	                            logger.log(Level.INFO, &quot;Please enter the address:&quot;);</span>
+<span class="nc" id="L189">	                            String address = scanner.next();</span>
+<span class="nc" id="L190">	                            logger.log(Level.INFO, &quot;Please enter the phone number:&quot;);</span>
+<span class="nc" id="L191">	                            String phone = scanner.next();</span>
+<span class="nc" id="L192">	                            customer.addd(admin);</span>
+<span class="nc" id="L193">	                            customer.ret(id, name9, email, address, phone);</span>
+<span class="nc" id="L194">	                            String filename2 = filenameproperities;</span>
+	                            try {
+<span class="nc" id="L196">	                            	FileOutputStream fos = new FileOutputStream(filename2, true);</span>
+	                            
+<span class="nc" id="L198">	                                 FileChannel channel = fos.getChannel();</span>
+<span class="nc" id="L199">	                                String customerInfo = id + &quot;,&quot; + name9 + &quot;,&quot; + email + &quot;,&quot; + address + &quot;,&quot; + phone + &quot;\n&quot;;</span>
+<span class="nc" id="L200">	                                ByteBuffer buffer = ByteBuffer.wrap(customerInfo.getBytes());</span>
+<span class="nc" id="L201">	                                channel.write(buffer);</span>
+<span class="nc" id="L202">	                                logger.log(Level.INFO, &quot;Customer information has been written to the file.&quot;);</span>
+<span class="nc" id="L203">	                            } catch (IOException e) {</span>
+<span class="nc" id="L204">	                            	String logMessage = String.format(&quot;Error writing to file: %s%n&quot;, e.getMessage());</span>
+<span class="nc" id="L205">	                            	logger.log(Level.INFO, logMessage);</span>
+<span class="nc" id="L206">	                            }</span>
+<span class="nc" id="L207">	                            break;</span>
+	                        case 8:
+<span class="nc" id="L209">	                            logger.log(Level.INFO, &quot;Please enter the name of the customer to edit:&quot;);</span>
+<span class="nc" id="L210">	                            String nameToEdit = scanner.next();</span>
+<span class="nc" id="L211">	                            File file = new File(filenameproperities);</span>
+<span class="nc" id="L212">	                            Scanner in = new Scanner(file);</span>
+	                            String m;
+<span class="nc" id="L214">	                            StringBuilder updatedCustomers = new StringBuilder();</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">	                            while (in.hasNextLine()) {</span>
+<span class="nc" id="L216">	                                m = in.nextLine();</span>
+<span class="nc" id="L217">	                                String[] fields = m.split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">	                                if (fields[1].equals(nameToEdit)) {</span>
+<span class="nc" id="L219">	                                    logger.log(Level.INFO, &quot;Please enter the new ID:&quot;);</span>
+<span class="nc" id="L220">	                                    String newId = scanner.next();</span>
+<span class="nc" id="L221">	                                    logger.log(Level.INFO, &quot;Please enter the new name:&quot;);</span>
+<span class="nc" id="L222">	                                    String newName = scanner.next();</span>
+<span class="nc" id="L223">	                                    logger.log(Level.INFO, &quot;Please enter the new email:&quot;);</span>
+<span class="nc" id="L224">	                                    String newEmail = scanner.next();</span>
+<span class="nc" id="L225">	                                    logger.log(Level.INFO, &quot;Please enter the new address:&quot;);</span>
+<span class="nc" id="L226">	                                    String newAddress = scanner.next();</span>
+<span class="nc" id="L227">	                                    logger.log(Level.INFO, &quot;Please enter the new phone number:&quot;);</span>
+<span class="nc" id="L228">	                                    String newPhone = scanner.next();</span>
+<span class="nc" id="L229">	                                    String updatedCustomer = newId + &quot;,&quot; + newName + &quot;,&quot; + newEmail + &quot;,&quot; + newAddress + &quot;,&quot; + newPhone;</span>
+<span class="nc" id="L230">	                                    updatedCustomers.append(updatedCustomer).append(&quot;\n&quot;);</span>
+<span class="nc" id="L231">	                                } else {</span>
+<span class="nc" id="L232">	                                    updatedCustomers.append(m).append(&quot;\n&quot;);</span>
+	                                }
+<span class="nc" id="L234">	                            }</span>
+<span class="nc" id="L235">	                            in.close();</span>
+	                            try {
+<span class="nc" id="L237">	                                FileWriter fileWriter = new FileWriter(filenameproperities);</span>
+<span class="nc" id="L238">	                                fileWriter.write(updatedCustomers.toString());</span>
+<span class="nc" id="L239">	                            } catch (IOException e) {</span>
+<span class="nc" id="L240">	                            	String logMessage = String.format(&quot;Error writing to file: %s%n&quot;, e.getMessage());</span>
+<span class="nc" id="L241">	                            	logger.log(Level.INFO, logMessage);</span>
+<span class="nc" id="L242">	                            }</span>
+<span class="nc" id="L243">	                            break;</span>
+
+	                        case 9:
+<span class="nc" id="L246">	                            logger.log(Level.INFO, &quot;Please enter a name: &quot;);</span>
+<span class="nc" id="L247">	                            String name5 = scanner.next();</span>
+	                            try {
+<span class="nc" id="L249">	                                ArrayList&lt;String&gt; al = new ArrayList&lt;String&gt;();</span>
+<span class="nc" id="L250">	                                RandomAccessFile raf = new RandomAccessFile(filenameproperities, &quot;rw&quot;);</span>
+<span class="nc" id="L251">	                                raf.seek(0);</span>
+	                                String s;
+<span class="nc bnc" id="L253" title="All 2 branches missed.">	                                while ((s = raf.readLine()) != null) {</span>
+<span class="nc" id="L254">	                                    al.add(s);</span>
+	                                }
+<span class="nc bnc" id="L256" title="All 2 branches missed.">	                                for (int i = 0; i &lt; al.size(); i++) {</span>
+<span class="nc" id="L257">	                                    String[] up = al.get(i).split(&quot;,&quot;);</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">	                                    if (name5.equals(up[1])) {</span>
+<span class="nc" id="L259">	                                        al.remove(i);</span>
+<span class="nc" id="L260">	                                        break;</span>
+	                                    }
+	                                }
+<span class="nc" id="L263">	                                BufferedWriter writer = new BufferedWriter(new FileWriter(filenameproperities));</span>
+<span class="nc" id="L264">	                                writer.write(&quot;&quot;);</span>
+<span class="nc" id="L265">	                                writer.flush();</span>
+<span class="nc" id="L266">	                                writer.close();</span>
+<span class="nc" id="L267">	                                raf.seek(0);</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">	                                for (int i = 0; i &lt; al.size(); i++) {</span>
+<span class="nc" id="L269">	                                    raf.writeBytes(al.get(i) + &quot;\n&quot;);</span>
+	                                }
+<span class="nc" id="L271">	                                raf.close();</span>
+<span class="nc" id="L272">	                            } catch (Exception exp) {</span>
+<span class="nc" id="L273">	                                logger.log(Level.INFO, &quot;Error&quot;);</span>
+<span class="nc" id="L274">	                            }</span>
+<span class="nc" id="L275">	                            break;</span>
+
+	                        case 6:
+<span class="nc" id="L278">	                            String filename22 = filenameproperities2;</span>
+<span class="nc" id="L279">	                            Scanner scannerr = new Scanner(System.in);</span>
+<span class="nc" id="L280">	                            logger.log(Level.INFO, &quot;Please enter the name: &quot;);</span>
+<span class="nc" id="L281">	                            String nameproduct = scannerr.nextLine();</span>
+<span class="nc" id="L282">	                            FileInputStream fis = new FileInputStream(filename22);</span>
+<span class="nc" id="L283">	                            FileOutputStream fos = new FileOutputStream(&quot;output.txt&quot;);</span>
+<span class="nc" id="L284">	                            byte[] buffer = new byte[1024];</span>
+	                            int bytesRead;
+<span class="nc" id="L286">	                            String currentLine = &quot;&quot;;</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">	                            while ((bytesRead = fis.read(buffer)) != -1) {</span>
+
+<span class="nc" id="L289">	                                String chunk = new String(buffer, 0, bytesRead);</span>
+	                                int index;
+<span class="nc bnc" id="L291" title="All 2 branches missed.">	                                while ((index = chunk.indexOf('\n')) != -1) {</span>
+<span class="nc" id="L292">	                                    String line = currentLine + chunk.substring(0, index);</span>
+
+<span class="nc" id="L294">	                                    String[] parts = line.split(&quot;,&quot;);</span>
+<span class="nc" id="L295">	                                    String name26 = parts[1];</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">	                                    if (name26.equals(nameproduct)) {</span>
+<span class="nc" id="L297">	                                        fos.write((parts[0] + &quot; &quot; + parts[1] + &quot; &quot; + parts[2] + &quot; &quot; + parts[3] + &quot; &quot; + parts[4] + &quot;\n&quot;).getBytes());</span>
+<span class="nc" id="L298">	                                        String logMessage = String.format(&quot;%s %s %s %s %s%n&quot;, parts[0], parts[1], parts[2], parts[3], parts[4]);</span>
+<span class="nc" id="L299">	                                        logger.log(Level.INFO, logMessage);</span>
+	                                    }
+
+<span class="nc" id="L302">	                                    chunk = chunk.substring(index + 1);</span>
+<span class="nc" id="L303">	                                    currentLine = &quot;&quot;;</span>
+<span class="nc" id="L304">	                                }</span>
+
+<span class="nc" id="L306">	                                StringBuilder builder = new StringBuilder(currentLine);</span>
+<span class="nc" id="L307">	                                builder.append(chunk);</span>
+<span class="nc" id="L308">	                                currentLine = builder.toString();	                               </span>
+
+<span class="nc" id="L310">	                            }</span>
+
+<span class="nc bnc" id="L312" title="All 2 branches missed.">	                            if (!currentLine.isEmpty()) {</span>
+<span class="nc" id="L313">	                                fos.write(&quot;Product not found.\n&quot;.getBytes());</span>
+	                            }
+	                            break;
+
+	                        case 16:
+<span class="nc" id="L318">	                            String filename7 = filenameproperities;</span>
+<span class="nc" id="L319">	                            Scanner scanner7 = new Scanner(System.in);</span>
+<span class="nc" id="L320">	                            logger.log(Level.INFO, &quot;Please enter the name: &quot;);</span>
+<span class="nc" id="L321">	                            String name7 = scanner7.nextLine();</span>
+
+<span class="nc" id="L323">	                            FileInputStream fis7 = new FileInputStream(filename7);</span>
+<span class="nc" id="L324">	                            FileOutputStream fos7 = new FileOutputStream(&quot;output1.txt&quot;);</span>
+
+<span class="nc" id="L326">	                            byte[] buffer7 = new byte[1024];</span>
+	                            int bytesRead7;
+<span class="nc" id="L328">	                            String currentLine7 = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L330" title="All 2 branches missed.">	                            while ((bytesRead7 = fis7.read(buffer7)) != -1) {</span>
+
+<span class="nc" id="L332">	                                String chunk7 = new String(buffer7, 0, bytesRead7);</span>
+
+	                                int index7;
+
+<span class="nc bnc" id="L336" title="All 2 branches missed.">	                                while ((index7 = chunk7.indexOf('\n')) != -1) {</span>
+
+<span class="nc" id="L338">	                                    String line7 = currentLine7 + chunk7.substring(0, index7);</span>
+
+<span class="nc" id="L340">	                                    String[] parts7 = line7.split(&quot;,&quot;);</span>
+<span class="nc" id="L341">	                                    String nameInFile7 = parts7[1];</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">	                                    if (nameInFile7.equals(name7)) {</span>
+<span class="nc" id="L343">	                                        fos7.write((parts7[0] + &quot; &quot; + parts7[1] + &quot; &quot; + parts7[2] + &quot; &quot; + parts7[3] + &quot; &quot; + parts7[4] + &quot;\n&quot;).getBytes());</span>
+<span class="nc" id="L344">	                                        String logMessage = String.format(&quot;%s %s %s %s %s %n&quot;, parts7[0], parts7[1], parts7[2],  parts7[3], parts7[4]);</span>
+<span class="nc" id="L345">	                                        logger.log(Level.INFO, logMessage);</span>
+	                                    }
+
+<span class="nc" id="L348">	                                    chunk7 = chunk7.substring(index7 + 1);</span>
+<span class="nc" id="L349">	                                    currentLine7 = &quot;&quot;;</span>
+<span class="nc" id="L350">	                                }</span>
+
+<span class="nc" id="L352">	                                StringBuilder builder = new StringBuilder();</span>
+<span class="nc" id="L353">	                                builder.append(currentLine7);</span>
+<span class="nc" id="L354">	                                builder.append(chunk7);</span>
+<span class="nc" id="L355">	                                currentLine7 = builder.toString();</span>
+<span class="nc" id="L356">	                            }</span>
+
+<span class="nc bnc" id="L358" title="All 2 branches missed.">	                            if (!currentLine7.isEmpty()) {</span>
+<span class="nc" id="L359">	                                fos7.write((&quot;Product not found.\n&quot;).getBytes());</span>
+	                            }
+
+	                            break;
+
+	                    
+	                        case 11:
+<span class="nc" id="L366">	                            List&lt;Map&lt;String, Object&gt;&gt; salesData = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span>
+<span class="nc" id="L367">	                            Map&lt;String, Object&gt; sale1 = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L368">	                            sale1.put(&quot;product&quot;, &quot;Widget A&quot;);</span>
+<span class="nc" id="L369">	                            sale1.put(&quot;quantity&quot;, 100);</span>
+<span class="nc" id="L370">	                            sale1.put(&quot;price&quot;, 10.0);</span>
+<span class="nc" id="L371">	                            sale1.put(&quot;total&quot;, 1000.0);</span>
+<span class="nc" id="L372">	                            salesData.add(sale1);</span>
+
+<span class="nc" id="L374">	                            Map&lt;String, Object&gt; sale2 = new HashMap&lt;String, Object&gt;();</span>
+<span class="nc" id="L375">	                            sale2.put(&quot;product&quot;, &quot;Widget B&quot;);</span>
+<span class="nc" id="L376">	                            sale2.put(&quot;quantity&quot;, 50);</span>
+<span class="nc" id="L377">	                            sale2.put(&quot;price&quot;, 20.0);</span>
+<span class="nc" id="L378">	                            sale2.put(&quot;total&quot;, 1000.0);</span>
+<span class="nc" id="L379">	                            salesData.add(sale2);</span>
+
+<span class="nc" id="L381">	                            BusinessReport report = new BusinessReport();</span>
+<span class="nc" id="L382">	                            report.setTitle(&quot;Sales Report&quot;);</span>
+<span class="nc" id="L383">	                            report.setDate(&quot;2023-05-06&quot;);</span>
+<span class="nc" id="L384">	                            report.setSalesData(salesData);</span>
+
+<span class="nc" id="L386">	                            ObjectMapper mapper = new ObjectMapper();</span>
+	                            try {
+<span class="nc" id="L388">	                                String json = mapper.writeValueAsString(report);</span>
+<span class="nc" id="L389">	                                logger.log(Level.INFO, json);</span>
+<span class="nc" id="L390">	                            } catch (JsonProcessingException e) </span>
+	                            {
+<span class="nc" id="L392">	                            	String logMessage = String.format(&quot;Error while processing JSON: %s%n&quot;, e.getMessage());</span>
+<span class="nc" id="L393">	                            	logger.log(Level.SEVERE, logMessage);</span>
+
+<span class="nc" id="L395">	                            	}</span>
+<span class="nc" id="L396">	                            break;</span>
+
+	                        case 14:
+<span class="nc" id="L399">	                            List&lt;Worker&gt; availableWorkers = new ArrayList&lt;Worker&gt;();</span>
+<span class="nc" id="L400">	                            availableWorkers.add(new Worker(&quot;Adham&quot;));</span>
+<span class="nc" id="L401">	                            availableWorkers.add(new Worker(&quot;Muheeb&quot;));</span>
+<span class="nc" id="L402">	                            availableWorkers.add(new Worker(&quot;Yazan&quot;));</span>
+<span class="nc" id="L403">	                            availableWorkers.add(new Worker(&quot;EZZ&quot;));</span>
+<span class="nc" id="L404">	                            availableWorkers.add(new Worker(&quot;Ali&quot;));</span>
+
+<span class="nc" id="L406">	                            List&lt;Orderr&gt; orders = new ArrayList&lt;Orderr&gt;();</span>
+<span class="nc" id="L407">	                            orders.add(new Orderr(&quot;Order 1&quot;));</span>
+<span class="nc" id="L408">	                            orders.add(new Orderr(&quot;Order 2&quot;));</span>
+<span class="nc" id="L409">	                            orders.add(new Orderr(&quot;Order 3&quot;));</span>
+<span class="nc" id="L410">	                            orders.add(new Orderr(&quot;Order 4&quot;));</span>
+<span class="nc" id="L411">	                            orders.add(new Orderr(&quot;Order 5&quot;));</span>
+<span class="nc" id="L412">	                            orders.add(new Orderr(&quot;Order 6&quot;));</span>
+
+<span class="nc" id="L414">	                            OrderDistributor distributor = new OrderDistributor(availableWorkers);</span>
+<span class="nc" id="L415">	                            distributor.distributeOrders(orders);</span>
+<span class="nc" id="L416">	                            break;</span>
+
+	                        case 12:
+<span class="nc" id="L419">	                            Scanner input = new Scanner(System.in);</span>
+
+<span class="nc" id="L421">	                            logger.log(Level.INFO, &quot;Enter customer name: &quot;);</span>
+<span class="nc" id="L422">	                            String customerName = input.nextLine();</span>
+
+<span class="nc" id="L424">	                            logger.log(Level.INFO, &quot;Enter total amount spent: &quot;);</span>
+<span class="nc" id="L425">	                            double totalAmount = input.nextDouble();</span>
+
+<span class="nc" id="L427">	                            double discount = 0.0;</span>
+<span class="nc bnc" id="L428" title="All 2 branches missed.">	                            if (totalAmount &gt; 400.0) {</span>
+<span class="nc" id="L429">	                                discount = 0.1 * totalAmount;</span>
+	                            }
+
+<span class="nc" id="L432">	                            double discountedAmount = totalAmount - discount;</span>
+
+<span class="nc" id="L434">	                            logger.log(Level.INFO, &quot;Customer Name: {0}&quot;, customerName);</span>
+<span class="nc" id="L435">	                            logger.log(Level.INFO, &quot;Total Amount Spent: {} NIS%n&quot;, totalAmount);</span>
+<span class="nc" id="L436">	                            logger.log(Level.INFO, &quot;Discount: {} NIS%n&quot;, discount);</span>
+<span class="nc" id="L437">	                            logger.log(Level.INFO, &quot;Discounted Amount: {} NIS%n&quot;, discountedAmount);</span>
+
+
+
+<span class="nc" id="L441">   break;</span>
+                default:
+<span class="nc" id="L443">                    logger.log(Level.INFO, &quot;Invalid input. Please try again.&quot;);</span>
+<span class="nc" id="L444">                    break;</span>
+            
+        
+
+
+
+
+				}
+	 		    
+	 		  
+
+	 				
+
+	                    break;
+  }break;
+
+		case 2 :
+				
+<span class="nc" id="L462">				logger.log(Level.INFO,&quot;1-Are you a new customer&quot;);</span>
+<span class="nc" id="L463">				logger.log(Level.INFO,&quot;2-Are you a customer Have an account?&quot;);</span>
+
+				
+				
+				
+				
+<span class="nc" id="L469">				break;</span>
+		case 3:
+<span class="nc" id="L471">				logger.log(Level.INFO,&quot;GOOD BAY.&quot;);</span>
+<span class="nc" id="L472">				break;</span>
+        default:
+<span class="nc" id="L474">            logger.log(Level.INFO, &quot;Invalid input. Please try again.&quot;);</span>
+<span class="nc" id="L475">            break;</span>
+    
+
+
+
+
+	}break;
+		}		
+<span class="nc" id="L483">	}</span>
+	
+	
+	public static void main(String[] args) throws IOException  
+	{
+		
+<span class="nc" id="L489">		function();</span>
+	
+<span class="nc" id="L491">}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Admin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mycleann</a> &gt; <a href="index.source.html" class="el_package">mycleann</a> &gt; <span class="el_source">Admin.java</span></div><h1>Admin.java</h1><pre class="source lang-java linenums">package mycleann;
+
+import java.io.InputStream;
+import java.util.Properties;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class Admin
+{
+
+<span class="pc" id="L12">	Properties r = new Properties();</span>
+<span class="pc" id="L13">	InputStream input888 = null;</span>
+	protected boolean adminlogged;
+	protected String adminName;
+	protected String adminPassword;
+	protected String update;
+	private Scanner scanner;
+<span class="fc" id="L19">	static Logger logger = Logger.getLogger(Admin.class.getName());</span>
+
+<span class="fc" id="L21">	 public Admin(String userName, String password) {</span>
+<span class="fc" id="L22">			this.adminName = userName;</span>
+<span class="fc" id="L23">			this.adminPassword = password;</span>
+<span class="fc" id="L24">			this.adminlogged = false;</span>
+<span class="fc" id="L25">		}</span>
+
+<span class="nc" id="L27">		public Admin() {</span>
+<span class="nc" id="L28">			this.adminName = &quot;adham_12028277&quot;;</span>
+<span class="nc" id="L29">	        this.adminPassword = enterPassword();</span>
+<span class="nc" id="L30">		}</span>
+		private String enterPassword() {
+<span class="nc" id="L32">	        scanner = new Scanner(System.in);</span>
+
+<span class="nc" id="L34">			logger.log(Level.INFO,&quot;Enter the admin password:&quot;);</span>
+<span class="nc" id="L35">	        return scanner.nextLine();</span>
+	    }
+
+		public boolean login(String userName, String password) {
+<span class="fc" id="L39">			this.adminlogged = this.adminName.equals(userName);</span>
+<span class="fc" id="L40">			this.adminlogged = this.adminPassword.equals(password);</span>
+<span class="fc" id="L41">			return this.adminlogged;</span>
+		}
+
+		public boolean logout() {
+<span class="fc" id="L45">			this.adminlogged = false;</span>
+<span class="fc" id="L46">			return this.adminlogged;</span>
+		}
+
+		public boolean isLogged() {
+<span class="fc" id="L50">			return this.adminlogged;</span>
+		}
+
+		public String updatingUp() {
+<span class="fc" id="L54">			return this.update;</span>
+		}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

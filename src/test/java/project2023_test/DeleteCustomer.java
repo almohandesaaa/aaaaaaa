@@ -9,10 +9,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mycleann.Admin;
 import mycleann.Customers;
-import mycleann.FirstClass;
 public class DeleteCustomer {
 
-	static Logger logger = Logger.getLogger(FirstClass.class.getName());
+	static Logger logger = Logger.getLogger(DeleteCustomer.class.getName());
 
 	Admin admin;
 	Customers customer;

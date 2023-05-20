@@ -11,10 +11,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mycleann.Customers;
-import mycleann.FirstClass;
 
 public class UpdateCustomer {
-	static Logger logger = Logger.getLogger(FirstClass.class.getName());
+	static Logger logger = Logger.getLogger(UpdateCustomer.class.getName());
 
 	Admin admin;
 	Customers customer;
